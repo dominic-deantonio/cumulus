@@ -1,4 +1,4 @@
-/// An server framework experience for the serverless
+/// A server framework experience for the serverless
 ///
 /// More dartdocs go here.
 library cumulus;
