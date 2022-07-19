@@ -1,16 +1,16 @@
 enum HttpMethod {
-  get,
-  post,
-  put,
-  patch,
-  delete,
-  head,
-  trace,
-  connect,
-  options,
-  before,
-  after,
-  invalid;
+  GET,
+  POST,
+  PUT,
+  PATCH,
+  DELETE,
+  HEAD,
+  TRACE,
+  CONNECT,
+  OPTIONS,
+  BEFORE,
+  AFTER,
+  INVALID;
 
   static HttpMethod fromString(String s) => HttpMethod.values.firstWhere((e) => e.toShortString() == s);
 

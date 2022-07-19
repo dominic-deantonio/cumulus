@@ -5,7 +5,7 @@ import 'enums.dart';
 class Request {
   final AwsALBEvent _event;
 
-  HttpMethod get httpMethod => _event.httpMethod == null ? HttpMethod.invalid : HttpMethod.fromString(_event.httpMethod!);
+  HttpMethod get httpMethod => _event.httpMethod == null ? HttpMethod.INVALID : HttpMethod.fromString(_event.httpMethod!);
 
   String get path => _event.path ?? 'error';
 
