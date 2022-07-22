@@ -14,11 +14,11 @@ class Cumulus {
   late final Map<String, Route> routes = {};
 
   Cumulus(this._event, [Iterable<Route> routes = const []]) {
-    this._context = Context(request: Request.fromAwsALBEvent(_event));
-    this.addRoutes(routes);
+    _context = Context(request: Request.fromAwsALBEvent(_event));
+    addRoutes(routes);
   }
 
-  static Future<Cumulus> fromShelf(Shelf.Request request, Iterable<Route>? routes) async => await Cumulus(
+  static Future<Cumulus> fromShelf(Shelf.Request request, Iterable<Route>? routes) async => Cumulus(
         await Convert.toAwsALBEvent(request),
         routes ?? [],
       );
@@ -34,7 +34,14 @@ class Cumulus {
 
   void addRoute(Route route) => addRoutes([route]);
 
-  Future<AwsALBResponse> getAwsAlbResponse() async => (await _respond()).toAwsAlbResponse();
+  Future<AwsALBResponse> getAwsAlbResponse() async {
+    try {
+      return (await _respond()).toAwsAlbResponse();
+    } catch (e) {
+      print(e);
+      return AwsALBResponse(body: "Internal error");
+    }
+  }
 
   Future<Shelf.Response> getShelfResponse() async => (await _respond()).toShelfResponse();
 
