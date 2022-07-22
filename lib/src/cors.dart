@@ -6,6 +6,7 @@ class Cors {
     handler: (Context c) {
       c.response.headers["Access-Control-Allow-Methods"] = "*";
       c.response.headers['Access-Control-Allow-Origin'] = '*';
+      c.response.headers['Access-Control-Allow-Headers'] = '*';
     },
     method: HttpMethod.OPTIONS,
   );
