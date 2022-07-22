@@ -4,10 +4,10 @@ import 'response.dart';
 import 'route_role.dart';
 
 final corsHeaders = {
-  'Content-Type': 'application/json;charset=UTF-8',
+  'Content-Type': '*/*',
   "Access-Control-Allow-Origin": "*",
   'Access-Control-Allow-Methods': 'GET, PUT, POST, DELETE, OPTIONS',
-  'Access-Control-Allow-Headers': '*'
+  'Access-Control-Allow-Headers': '*',
 };
 
 class Context {
