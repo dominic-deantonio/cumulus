@@ -1,5 +1,4 @@
 import 'package:aws_lambda_dart_runtime/events/alb_event.dart';
-import 'package:dotenv/dotenv.dart';
 import 'package:shelf/src/request.dart' as Shelf;
 import 'package:shelf/src/response.dart' as Shelf;
 
@@ -10,10 +9,6 @@ import 'response.dart';
 import 'route.dart';
 
 class Cumulus {
-  static late final DotEnv env;
-
-  static void loadEnv({Iterable<String>? envPaths, bool includePlatform = true}) => env = DotEnv(includePlatformEnvironment: includePlatform)..load(envPaths ?? []);
-
   final AwsALBEvent _event;
   late final Context _context;
   late final Map<String, Route> routes = {};
