@@ -27,6 +27,7 @@ class Cumulus {
       );
 
   Future<Response> _respond() async {
+    print('Is cors allowed: $allowCors');
     if (allowCors) _context.setCors();
     Route? route = _getRoute();
     if (route == null) return Response.routeNotFound();
