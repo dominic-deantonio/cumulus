@@ -4,9 +4,13 @@ class Cors {
   static Route route = Route(
     path: 'any',
     handler: (Context c) {
-      c.response.headers["Access-Control-Allow-Methods"] = "*";
-      c.response.headers['Access-Control-Allow-Origin'] = '*';
-      c.response.headers['Access-Control-Allow-Headers'] = '*';
+      final headers = {
+        'Content-Type': 'application/json;charset=UTF-8',
+        "Access-Control-Allow-Origin": "*",
+        'Access-Control-Allow-Methods': 'GET, PUT, POST, DELETE, OPTIONS',
+        'Access-Control-Allow-Headers': '*'
+      };
+      c.response.headers = headers;
     },
     method: HttpMethod.OPTIONS,
   );
