@@ -51,6 +51,7 @@ class Cumulus {
   Future<Shelf.Response> getShelfResponse() async => (await _respond()).toShelfResponse();
 
   Route? _getRoute() {
+    if (_context.requestMethod == HttpMethod.OPTIONS) return Cors.route;
     // Should improve this in the future to support real URI schemes
     String key = Convert.toRouteKey(_context.requestMethod, _context.path);
     return routes[key];
