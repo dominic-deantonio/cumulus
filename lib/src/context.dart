@@ -12,7 +12,7 @@ final corsHeaders = {
 
 class Context {
   late final Request request;
-  late final Response response = Response(headers: corsHeaders);
+  late final Response response = Response();
   late Iterable<RouteRole> roles;
   late Map<dynamic, dynamic> store = {};
 
@@ -23,6 +23,6 @@ class Context {
   Context({required this.request});
 
   void setCors() {
-    print('Added cors headers');
+    response.headers.addAll(corsHeaders);
   }
 }
