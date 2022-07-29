@@ -14,7 +14,7 @@ class Cumulus {
   final AwsALBEvent _event;
   late final Context _context;
   late final Map<String, Route> routes = {};
-  bool allowCors = false;
+  bool allowCors = true;
 
   Cumulus(this._event, [Iterable<Route> routes = const []]) {
     _context = Context(request: Request.fromAwsALBEvent(_event));
