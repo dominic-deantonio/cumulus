@@ -14,7 +14,6 @@ class Cumulus {
   final AwsALBEvent _event;
   late final Context _context;
   late final Map<String, Route> routes = {};
-  bool allowCors = true;
 
   Cumulus(this._event, [Iterable<Route> routes = const []]) {
     _context = Context(request: Request.fromAwsALBEvent(_event));
@@ -27,8 +26,6 @@ class Cumulus {
       );
 
   Future<Response> _respond() async {
-    print('Is cors allowed: $allowCors');
-    if (allowCors) _context.setCors();
     Route? route = _getRoute();
     if (route == null) return Response.routeNotFound();
     await route.process(_context);
