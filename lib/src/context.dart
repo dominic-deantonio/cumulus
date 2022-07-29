@@ -22,5 +22,8 @@ class Context {
 
   Context({required this.request});
 
-  void setCors() => response.headers = corsHeaders;
+  void setCors() {
+    response.headers = corsHeaders;
+    print('Added cors headers');
+  }
 }
