@@ -7,6 +7,7 @@ import 'response.dart';
 
 class Convert {
   static AwsALBResponse toAlbResponse(Response response) {
+    print('Headers before converting to ALB Response ${response.headers}');
     return AwsALBResponse(
       body: response.body,
       statusCode: response.statusCode,
